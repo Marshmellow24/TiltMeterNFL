@@ -1,0 +1,10 @@
+__pycache__/
+.vscode/
+.venv
+.venv/
+venv/
+config.yml
+datasets/
+Jets/
+*.pyc
+__pycache__
