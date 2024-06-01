@@ -5,6 +5,5 @@ __pycache__/
 venv/
 config.yml
 datasets/
-Jets/
 *.pyc
 __pycache__
