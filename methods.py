@@ -1,6 +1,7 @@
 import praw
 import string, contractions
 import yaml, csv
+import pandas as pd
 
 # constant for default config file 
 CONFIG = "config.yml"
@@ -12,10 +13,10 @@ def get_config(filename):
     return api_credentials
 
 # read file for inference
-def loadCSV(filename):
-    with open(filename, "r") as file:
-        prepared_comments = csv.reader(file, delimiter=";")
-    return prepared_comments
+def loadCSV2DF(filename):
+    with open(filename, "r", encoding="utf-8") as file:
+        output = pd.read_csv(file, sep = ";", usecols=[1], skip_blank_lines=True, header=None)
+    return output
 
 # hook up to Reddit API
 def reddit_api(config = CONFIG):
@@ -43,7 +44,7 @@ def cleanser(input):
         output_list.append(comment)
     return output_list
 
-# parse through non-deleted/removed comments until count is reached
+# parse through cleanec non-deleted/removed comments until count is reached
 def parseComments(comments, count):
     buffer = []
     deleted = ["[deleted]", "[removed]", "[gelöscht]", "[entfernt]"]
@@ -56,5 +57,9 @@ def parseComments(comments, count):
     
     return buffer 
 
-if __name__ == "main":
+def convertDF(input):
+    pdf = pd.DataFrame(input)
+    return pdf
+
+if __name__ == "__main__":
     pass
