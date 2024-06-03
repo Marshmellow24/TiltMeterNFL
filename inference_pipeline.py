@@ -13,7 +13,7 @@ classifier = getClassifier()
 batch = comments.iloc[:, 0]
 print(batch)
 
-for row in batch[:100]:
+for row in batch[:50]:
     print(classifier(row))
 # output = [classifier(x) for x in comments.iloc[:2]]
 # print(output)
