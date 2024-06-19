@@ -12,13 +12,7 @@ def getModel():
 
 
 def getClassifier():
-    # model1, tokenizer1 = getModel()
-
-    model_id = "SamLowe/roberta-base-go_emotions-onnx"
-    file_name = "onnx/model_quantized.onnx"
-
-    model = ORTModelForSequenceClassification.from_pretrained(model_id, file_name=file_name, provider ="CPUExecutionProvider")
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
+    model, tokenizer = getModel()
     
     onnx_classifier = pipeline(
     task="text-classification",
@@ -32,8 +26,8 @@ def getClassifier():
 
 if __name__ == "__main__":
 
-    model_id = "SamLowe/roberta-base-go_emotions-onnx"
-    file_name = "onnx/model_quantized.onnx"
+    # model_id = "SamLowe/roberta-base-go_emotions-onnx"
+    # file_name = "onnx/model_quantized.onnx"
 
     # model = ORTModelForSequenceClassification.from_pretrained(model_id, file_name=file_name, provider ="CPUExecutionProvider")
     # tokenizer = AutoTokenizer.from_pretrained(model_id)

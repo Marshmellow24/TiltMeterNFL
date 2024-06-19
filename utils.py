@@ -12,11 +12,29 @@ def get_config(filename):
         api_credentials = yaml.safe_load(file)
     return api_credentials
 
-# read file for inference
+# read csv file and transform into df
 def loadCSV2DF(filename):
     with open(filename, "r", encoding="utf-8") as file:
-        output = pd.read_csv(file, sep = ";", usecols=[1], skip_blank_lines=True, header=None)
+        output = pd.read_csv(file, sep = ";", usecols=[1], skip_blank_lines=True, header=0)
     return output
+
+# read csv file
+def loadCSV(filename):
+    output = []
+    with open(filename, "r", encoding="utf-8") as file:
+        f = csv.reader(file, delimiter=";", skipinitialspace=True)
+        for row in f:
+            output.append(row)
+    return output[1:]
+
+# get model info from csv
+def getModel(index, file):
+    df = pd.read_csv(file,  sep=";")
+    task = df.loc[index,:]["task"]
+    model = df.loc[index,:]["model"]
+    file_name = df.loc[index,:]["file_name"]
+    
+    return task, model, file_name
 
 # hook up to Reddit API
 def reddit_api(config = CONFIG):
