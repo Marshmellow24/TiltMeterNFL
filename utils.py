@@ -32,9 +32,9 @@ def getModel(index, file):
     df = pd.read_csv(file,  sep=";")
     task = df.loc[index,:]["task"]
     model = df.loc[index,:]["model"]
-    file_name = df.loc[index,:]["file_name"]
+    framework = df.loc[index,:]["framework"]
     
-    return task, model, file_name
+    return task, model, framework
 
 # hook up to Reddit API
 def reddit_api(config = CONFIG):

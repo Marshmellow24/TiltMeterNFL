@@ -1,8 +1,8 @@
 import string, utils
 import contractions, pandas
-from utils import loadCSV2DF as csv
-from utils import getModel 
-from transformers import pipeline
+# from utils import loadCSV2DF as csv
+# from utils import getModel 
+# from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification
 
 text = "almost like a 40yr old lt is not a good idea especially if your qb is 40 too"
 
@@ -22,12 +22,20 @@ text = "almost like a 40yr old lt is not a good idea especially if your qb is 40
 # print(df.loc[0,:]["model"])
 
 
-task, model1, file_name = getModel(26)
+# task, model1, framework = getModel(22, "models/hf_models.csv")
 
-#print(getModel(26))
+# #print(getModel(26))
 
-pipe = pipeline(task, model=model1)
+# tokenizer = AutoTokenizer.from_pretrained("ZachBeesley/Tweet-Emotion")
+# model = AutoModelForSequenceClassification.from_pretrained("ZachBeesley/Tweet-Emotion", from_tf = True)
 
-print(pipe(text, top_k = 3))
-# for row in csv("models/ort_models.csv"):
-#     print(row)
+# pipe = pipeline(task, model=model, tokenizer=tokenizer)
+# #pipe = pipeline(task=task, model=model1)
+
+# print(pipe(text, top_k = 3))
+# # for row in csv("models/ort_models.csv"):
+# #     print(row)
+
+for i in range(0,25):
+    print(i)
+    
